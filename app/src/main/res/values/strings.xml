@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Demo Simple Click</string>
+    <string name="textViewDisplay">Display what the user enters</string>
+    <string name="enter_something">Enter Something</string>
+    <string name="display">DISPLAY</string>
+    <string name="disable">Disable</string>
+    <string name="enable">Enable</string>
+    <string name="amount">Amount</string>
+    <string name="_50">50</string>
+    <string name="num_of_pax">Num of Pax</string>
+    <string name="_2">2</string>
+    <string name="no_svs">No SVS</string>
+    <string name="svs">SVS</string>
+    <string name="gst">GST</string>
+    <string name="no_gst">No GST</string>
+    <string name="discount">Discount(%)</string>
+    <string name="_7">7</string>
+    <string name="cash">Cash</string>
+    <string name="paynow">PayNow</string>
+    <string name="split">SPLIT</string>
+    <string name="reset">RESET</string>
+    <string name="output_shown_here">OUTPUT shown here</string>
+</resources>
