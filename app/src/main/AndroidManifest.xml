@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoSimpleClick">
-        <activity android:name=".TheBillCalculator"></activity>
+        <activity android:name=".MainActivityPracticalAssassment"></activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".MainActivityPracticalAssassment">
+        <activity android:name=".TheBillCalculator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

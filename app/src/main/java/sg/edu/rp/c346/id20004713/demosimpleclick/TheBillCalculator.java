@@ -46,7 +46,8 @@ public class TheBillCalculator extends AppCompatActivity {
                 etDiscount.setText("");
                 tbSVC.setChecked(false);
                 tbGST.setChecked(false);
-                rgPayment.clearCheck();
+                rgPayment.check(R.id.rbCash);
+                tvOutput.setText("");
             }
         });
 
@@ -54,12 +55,14 @@ public class TheBillCalculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 double amountOut = 0.0;
-                double amountEntered = Double.parseDouble(etAmount.getText().toString());
                 int paymentMethodId = rgPayment.getCheckedRadioButtonId();
-                double numOfPeople = Double.parseDouble(etPax.getText().toString());
-                double discount = Double.parseDouble((etDiscount.getText().toString()));
 
-                if(amountEntered > 0 && numOfPeople > 0){
+                if(etPax.getText().toString().trim().length() > 0 &&
+                        etAmount.getText().toString().trim().length() > 0){
+
+                    double numOfPeople = Double.parseDouble(etPax.getText().toString());
+                    double amountEntered = Double.parseDouble(etAmount.getText().toString());
+
                     if (tbSVC.isChecked() && tbGST.isChecked()){
                         amountOut = amountEntered * 1.17;
                     } else if (tbSVC.isChecked() && ! tbGST.isChecked()){
@@ -72,20 +75,23 @@ public class TheBillCalculator extends AppCompatActivity {
 
 
                     if (etDiscount.getText().toString().trim().length() > 0) {
-                        amountOut = amountOut * ((100 - discount) / 100);
+                        amountOut = amountOut * ((100 - Double.parseDouble(
+                                (etDiscount.getText().toString()))) / 100);
                     }
 
                     double paymentPerPerson = amountOut / numOfPeople;
 
+
                     if (paymentMethodId == R.id.rbCash){
-                        tvOutput.setText("Total Bill: $" + amountOut + "\nEach Pays: $" + paymentPerPerson
-                                + " in Cash");
+                        tvOutput.setText(String.format("Total Bill: $%.2f \nEach Pays: $%.2f in cash",
+                                amountOut, paymentPerPerson));
                     } else {
-                        tvOutput.setText("Total Bill: $" + amountOut + "\nEach Pays: $" + paymentPerPerson
-                                + " via PayNow to 91234567");
+                        tvOutput.setText(String.format("Total Bill: $%.2f \nEach Pays: $%.2f via " +
+                                        "PayNow to 91234567",
+                                amountOut, paymentPerPerson));
                     }
                 } else {
-                    Toast.makeText(TheBillCalculator.this, "Invalid Input",
+                    Toast.makeText(TheBillCalculator.this, "Invalid Input/Missing Fields",
                             Toast.LENGTH_LONG).show();
                 }
             }
